@@ -1,0 +1,76 @@
+@font-face {
+    font-family: "Voyage W00 Regular";
+    src: url("https://db.onlinewebfonts.com/t/3ccc7619a6734306ae5961c9735aad42.eot");
+    src: url("https://db.onlinewebfonts.com/t/3ccc7619a6734306ae5961c9735aad42.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/3ccc7619a6734306ae5961c9735aad42.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/3ccc7619a6734306ae5961c9735aad42.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/3ccc7619a6734306ae5961c9735aad42.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/3ccc7619a6734306ae5961c9735aad42.svg#Voyage W00 Regular")format("svg");
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+#main{
+    height: 100%;
+    width: 100%;
+    background-color: #111;
+    position: relative;
+}
+#elem-div{
+    height: 100vh;
+    width: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+    position: relative;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+}
+#elem-div::-webkit-scrollbar{
+    display: none;
+}
+.elems{
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    border-bottom: 1px solid #4a4a4a;
+    margin-left: -5px;
+    position: relative;
+}
+
+.elems h2{
+    /* transform: rotate(-90deg); */
+   position: absolute;
+   color: rgb(221, 221, 221);
+   font-family: "Voyage W00 Regular";
+   width: 600px;
+   height: 190px;
+   z-index: 9999;
+   font-weight: 300;
+   font-size: 60px;
+   align-items: center;
+   justify-content: flex-start;
+   /* bottom: -21%; */
+   left: 100px;
+   transform-origin: left top;
+}
+#image{
+    position: absolute;
+    height: 250px;
+    width: 350px;
+    overflow: hidden;
+    z-index: 9;
+    left: 0;
+    top: 0;
+    background-color: red;
+    background-position: center;
+    transform: rotate(2deg);
+    background-size: cover;
+    transition: height 0.5s, width 0.5s, transform cubic-bezier(0.19,1,0.22,1)0.4s ;
+}
