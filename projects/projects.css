@@ -1,76 +1,184 @@
-@font-face {
-    font-family: "Voyage W00 Regular";
-    src: url("https://db.onlinewebfonts.com/t/3ccc7619a6734306ae5961c9735aad42.eot");
-    src: url("https://db.onlinewebfonts.com/t/3ccc7619a6734306ae5961c9735aad42.eot?#iefix")format("embedded-opentype"),
-    url("https://db.onlinewebfonts.com/t/3ccc7619a6734306ae5961c9735aad42.woff2")format("woff2"),
-    url("https://db.onlinewebfonts.com/t/3ccc7619a6734306ae5961c9735aad42.woff")format("woff"),
-    url("https://db.onlinewebfonts.com/t/3ccc7619a6734306ae5961c9735aad42.ttf")format("truetype"),
-    url("https://db.onlinewebfonts.com/t/3ccc7619a6734306ae5961c9735aad42.svg#Voyage W00 Regular")format("svg");
-}
 *{
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 html,body{
-    height: 100%;
-    width: 100%;
-}
-#main{
-    height: 100%;
-    width: 100%;
-    background-color: #111;
-    position: relative;
-}
-#elem-div{
+    width: 100vw;
     height: 100vh;
-    width: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow-x: auto;
-    position: relative;
-    overflow-y: hidden;
-    scroll-behavior: smooth;
+    overflow: hidden;
 }
-#elem-div::-webkit-scrollbar{
-    display: none;
-}
-.elems{
-    height: 100%;
+img{
     width: 100%;
-    display: inline-block;
-    border-bottom: 1px solid #4a4a4a;
-    margin-left: -5px;
-    position: relative;
+    height: 100%;
+    object-fit: cover;
+}
+.nav{
+    position: fixed;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.4em;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform:uppercase ;
+    z-index: 2;
+    pointer-events: none;
+}
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
 }
 
-.elems h2{
-    /* transform: rotate(-90deg); */
-   position: absolute;
-   color: rgb(221, 221, 221);
-   font-family: "Voyage W00 Regular";
-   width: 600px;
-   height: 190px;
-   z-index: 9999;
-   font-weight: 300;
-   font-size: 60px;
-   align-items: center;
-   justify-content: flex-start;
-   /* bottom: -21%; */
-   left: 100px;
-   transform-origin: left top;
+.container .col{
+    width: 50%;
+    height: 100%;
 }
-#image{
+.container .img_preview{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 1em;
+}
+.container .img_preview  .img_preview_container{
+    width: 160px;
+    height: 220px;
+    clip-path: polygon(0 0,100% 0, 100% 100%,0 100%);
+}
+.container .img_names{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1em;
+}
+
+.container .img_names .img_name{
+    position: relative;
+    width: max-content;
+    height: max-content;
+    cursor: pointer;
+}
+.container .img_names .img_name .name_revealer{
     position: absolute;
-    height: 250px;
-    width: 350px;
-    overflow: hidden;
-    z-index: 9;
-    left: 0;
     top: 0;
-    background-color: red;
-    background-position: center;
-    transform: rotate(2deg);
-    background-size: cover;
-    transition: height 0.5s, width 0.5s, transform cubic-bezier(0.19,1,0.22,1)0.4s ;
+    width: 100%;
+    height: 100%;
+}
+.container .img_names .img_name .name{
+    position: relative;
+    top: 0;
+    font-size: 26px;
+    letter-spacing: -0.25px;
+    /* color: black; */
+    text-transform: uppercase;
+}
+.container .img_names .img_name .name_revealer:after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top:  30px;
+    width: 105%;
+    height: 105%;
+    background: #fff;
+}
+.img_modal {
+position: fixed;
+top: 0;
+height: 100vh;
+width: 100vw;
+background: #fff;
+display: flex;
+flex-direction: column;
+z-index: 1;
+pointer-events: none;
+opacity: 0;
+
+}
+.img_modal .img_view{
+position: absolute;
+top: 50%;
+left: 25%;
+transform: translate(-50%, -50%);
+width: 400px;
+height: 500px;
+clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+
+.img_modal .close_btn{
+    position: absolute;
+    right: 5%;
+bottom: 10%;
+    width: max-content;
+    height: max-content;
+    margin: 1em;
+    cursor: pointer;
+    background: #111;
+}
+.img_modal .close_btn .btn_revealer{
+position: absolute;
+border: 10px;
+height: 100%;
+width: 100%;
+}
+
+.img_modal .close_btn ,.btn_revealer:after{
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    right: 100px;
+    width: 20%;
+    height: 10%;
+    background: #fff;
+    z-index: 1;
+}
+.img_modal_name{
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%,-50%);
+    width: max-content;
+    height: max-content;
+}
+.img_modal_name .modal_name{
+    position: relative;
+    top: -20px;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.img_modal_name .modal_name-revealer{
+position: absolute;
+top: 0;
+width: 100%;
+height: 100%;
+}
+.img_modal_name .modal_name-revealer:after{
+content: "";
+position: absolute;
+top: -20px;
+left: 0;
+width: 105%;
+height: 105%;
+background: #fff;
+
+}
+
+@media (max-width:700px) {
+    .img_modal .close_btn{
+        right: 30%;
+    }
+    .img_modal .img_view{
+        top: 50%;
+        left: 50%;
+        width: 300px;
+        height: 400px;
+    }
+    .img_modal_name{
+        top: 15%;
+        right: 30%;
+        left: unset;
+        transform: translate(0,0);
+        margin: 1em;
+    }
 }
